@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    x:Class="InventoryApp.Views.MainPage"
+    Title="Inicio">
+
+    <ScrollView>
+
+        <VerticalStackLayout Padding="20">
+
+            <Label
+                Text="Bienvenido"
+                FontSize="30"
+                FontAttributes="Bold"/>
+
+            <Frame Margin="0,20">
+
+                <VerticalStackLayout>
+
+                    <Label Text="Productos"/>
+                    <Label Text="125"/>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+            <Frame>
+
+                <VerticalStackLayout>
+
+                    <Label Text="Stock Bajo"/>
+                    <Label Text="10"/>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

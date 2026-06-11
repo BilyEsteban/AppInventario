@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="AppInventario.Views.ProductPage"
+    Title="Productos">
+
+    <Grid Padding="15">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Button
+            Grid.Row="0"
+            Text="Nuevo Producto"/>
+
+        <CollectionView
+            Grid.Row="1">
+
+            <CollectionView.ItemTemplate>
+
+                <DataTemplate>
+
+                    <Frame Margin="5">
+
+                        <VerticalStackLayout>
+
+                            <Label
+                                Text="{Binding Name}"
+                                FontAttributes="Bold"/>
+
+                            <Label
+                                Text="{Binding Stock}"/>
+
+                        </VerticalStackLayout>
+
+                    </Frame>
+
+                </DataTemplate>
+
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+
+    </Grid>
+
+</ContentPage>
