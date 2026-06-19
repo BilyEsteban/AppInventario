@@ -4,7 +4,10 @@ using System.Text;
 
 namespace AppInventario.ViewsModels
 {
-    internal class LoginPage
+    internal class ProductFormPageViewModel
     {
+        public ProductFormPageViewModel()
+        {
+        }
     }
 }

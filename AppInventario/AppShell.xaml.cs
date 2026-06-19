@@ -1,4 +1,5 @@
-﻿using AppInventario.ViewsModels;
+﻿using AppInventario.Views;
+using AppInventario.ViewsModels;
 
 namespace AppInventario
 {
@@ -8,14 +9,11 @@ namespace AppInventario
         {
             InitializeComponent();
 
-            Routing.RegisterRoute(
-                nameof(ProductFormPage),
-                typeof(ProductFormPage));
-
-            Routing.RegisterRoute(
-                nameof(LoginPage),
-                typeof(LoginPage));
+            // Registrar rutas de navegación
+            Routing.RegisterRoute("main", typeof(MainPage));
+            Routing.RegisterRoute("products", typeof(ProductPage));
+            Routing.RegisterRoute("productform", typeof(ProductFormPage));
+            Routing.RegisterRoute("login", typeof(LoginPage));
         }
-
     }
 }

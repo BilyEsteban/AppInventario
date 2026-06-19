@@ -1,29 +1,176 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
+<ContentPage 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="AppInventario.Views.LoginPage"
-    Title="Login">
+    Title="Login"
+    BackgroundColor="#1E3A8A">
 
     <VerticalStackLayout
-        Padding="30"
-        Spacing="20"
-        VerticalOptions="Center">
+        Spacing="0"
+        VerticalOptions="Fill">
 
-        <Label
-            Text="Sistema de Inventario"
-            FontSize="28"
-            FontAttributes="Bold"
-            HorizontalOptions="Center"/>
+        <!-- Header -->
+        <VerticalStackLayout 
+            Padding="30,50,30,30"
+            Spacing="10"
+            VerticalOptions="Start">
+            <Label
+                Text="📦"
+                FontSize="64"
+                HorizontalOptions="Center"/>
+            <Label
+                Text="AppInventario"
+                FontSize="32"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="White"/>
+            <Label
+                Text="Sistema de Gestión de Inventario"
+                FontSize="16"
+                HorizontalOptions="Center"
+                TextColor="#E0E7FF"
+                Opacity="0.9"/>
+        </VerticalStackLayout>
 
-        <Entry
-            Placeholder="Usuario"/>
+        <!-- Formulario -->
+        <VerticalStackLayout
+            Padding="30"
+            Spacing="16"
+            VerticalOptions="End">
 
-        <Entry
-            Placeholder="Contraseña"
-            IsPassword="True"/>
+            <!-- Card de Login -->
+            <Frame 
+                BorderColor="#3B82F6" 
+                CornerRadius="15" 
+                Padding="20" 
+                HasShadow="True" 
+                BackgroundColor="White">
 
-        <Button
-            Text="Iniciar Sesión"/>
+                <VerticalStackLayout Spacing="16">
+
+                    <Label
+                        Text="Inicia Sesión"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        TextColor="#1E3A8A"
+                        HorizontalOptions="Center"/>
+
+                    <!-- Usuario -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label 
+                            Text="Usuario o Email" 
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="#1F2937"/>
+                        <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                            <Entry
+                                Placeholder="ej: usuario@ejemplo.com"
+                                FontSize="14"
+                                PlaceholderColor="#9CA3AF"
+                                />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Contraseña -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label 
+                            Text="Contraseña" 
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="#1F2937"/>
+                        <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                            <Entry
+                                Placeholder="Ingresa tu contraseña"
+                                IsPassword="True"
+                                FontSize="14"
+                                PlaceholderColor="#9CA3AF"
+                                />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <!-- Recordarme & Olvidé contraseña -->
+                    <Grid ColumnDefinitions="*,*">
+                        <CheckBox Margin="0,0,10,0"/>
+                        <Label 
+                            Text="Recuérdame"
+                            FontSize="12"
+                            TextColor="#6B7280"
+                            VerticalOptions="Center"
+                            Margin="0,0,0,0"/>
+                        <Label 
+                            Text="¿Olvidaste tu contraseña?"
+                            FontSize="12"
+                            TextColor="#3B82F6"
+                            Grid.Column="1"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"/>
+                    </Grid>
+
+                    <!-- Botón Iniciar Sesión -->
+                    <Button
+                        Text="Iniciar Sesión"
+                        BackgroundColor="#3B82F6"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        Padding="0,14"
+                        FontSize="16"
+                        Clicked="OnLoginClicked"/>
+
+                    <!-- Divisor -->
+                    <Grid ColumnDefinitions="*,Auto,*" ColumnSpacing="10" Margin="0,10">
+                        <BoxView BackgroundColor="#E5E7EB" HeightRequest="1" VerticalOptions="Center"/>
+                        <Label 
+                            Text="O"
+                            FontSize="12"
+                            TextColor="#9CA3AF"
+                            Grid.Column="1"/>
+                        <BoxView BackgroundColor="#E5E7EB" HeightRequest="1" VerticalOptions="Center" Grid.Column="2"/>
+                    </Grid>
+
+                    <!-- Botones Sociales -->
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <Button
+                            Text="Google"
+                            BackgroundColor="#F3F4F6"
+                            TextColor="#1F2937"
+                            CornerRadius="8"
+                            Padding="0,12"
+                            FontSize="14"/>
+                        <Button
+                            Text="Microsoft"
+                            BackgroundColor="#F3F4F6"
+                            TextColor="#1F2937"
+                            CornerRadius="8"
+                            Padding="0,12"
+                            FontSize="14"
+                            Grid.Column="1"/>
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+            <!-- Registro -->
+            <VerticalStackLayout Spacing="0" HorizontalOptions="Center">
+                <Label
+                    Text="¿No tienes cuenta?"
+                    FontSize="13"
+                    TextColor="#E0E7FF"
+                    HorizontalOptions="Center"/>
+                <Label
+                    Text="Crea una aquí"
+                    FontSize="13"
+                    TextColor="#FCD34D"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"/>
+            </VerticalStackLayout>
+
+            <!-- Espacio -->
+            <BoxView HeightRequest="20"/>
+
+        </VerticalStackLayout>
 
     </VerticalStackLayout>
 

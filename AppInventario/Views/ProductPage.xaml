@@ -1,48 +1,167 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-    <ContentPage
+<ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="AppInventario.Views.ProductPage"
-    Title="Productos">
+    Title="Productos"
+    BackgroundColor="#F8F9FA">
 
-    <Grid Padding="15">
+    <Grid RowDefinitions="Auto,*" Padding="0">
+        
+        <!-- Header -->
+        <Grid RowDefinitions="Auto" Padding="20,15" BackgroundColor="#1E3A8A" ColumnDefinitions="*,Auto">
+            <VerticalStackLayout Spacing="5">
+                <Label 
+                    Text="Productos" 
+                    FontSize="28" 
+                    FontAttributes="Bold"
+                    TextColor="White"/>
+                <Label 
+                    Text="Gestión de Inventario" 
+                    FontSize="14"
+                    TextColor="#E0E7FF"
+                    Opacity="0.9"/>
+            </VerticalStackLayout>
+            <Button 
+                Text="Nuevo" 
+                BackgroundColor="#10B981"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="8"
+                Padding="12,10"
+                FontSize="12"
+                Grid.Column="1"
+                VerticalOptions="Center"
+                Clicked="OnNewProductClicked"/>
+        </Grid>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <!-- Contenido -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="16" Spacing="12">
 
-        <Button
-            Grid.Row="0"
-            Text="Nuevo Producto"/>
+                <!-- Barra de búsqueda -->
+                <Frame BorderColor="#E5E7EB" CornerRadius="12" Padding="0" HasShadow="True" BackgroundColor="White">
+                    <Grid ColumnDefinitions="*,Auto" Padding="12">
+                        <Entry 
+                            Placeholder="Buscar productos..."
+                            FontSize="14"
+                            TextColor="#1F2937"
+                            PlaceholderColor="#9CA3AF"/>
+                        <Label 
+                            Text="" 
+                            FontSize="20"
+                            Grid.Column="1"
+                            VerticalOptions="Center"
+                            Margin="8,0,0,0"/>
+                    </Grid>
+                </Frame>
 
-        <CollectionView
-            Grid.Row="1">
+                <!-- Filtros -->
+                <HorizontalStackLayout Spacing="8">
+                    <Button 
+                        Text="Todos" 
+                        BackgroundColor="#3B82F6"
+                        TextColor="White"
+                        FontSize="12"
+                        CornerRadius="8"
+                        Padding="12,6"
+                        FontAttributes="Bold"/>
+                    <Button 
+                        Text="Bajo Stock" 
+                        BackgroundColor="#F3F4F6"
+                        TextColor="#6B7280"
+                        FontSize="12"
+                        CornerRadius="8"
+                        Padding="12,6"
+                        BorderColor="#E5E7EB"
+                        BorderWidth="1"/>
+                    <Button 
+                        Text="Disponibles" 
+                        BackgroundColor="#F3F4F6"
+                        TextColor="#6B7280"
+                        FontSize="12"
+                        CornerRadius="8"
+                        Padding="12,6"
+                        BorderColor="#E5E7EB"
+                        BorderWidth="1"/>
+                </HorizontalStackLayout>
 
-            <CollectionView.ItemTemplate>
+                <!-- Lista de Productos -->
+                <CollectionView>
+                    <CollectionView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Tornillos M4</x:String>
+                            <x:String>Arandelas</x:String>
+                            <x:String>Tuercas M5</x:String>
+                        </x:Array>
+                    </CollectionView.ItemsSource>
 
-                <DataTemplate>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BorderColor="#E5E7EB" CornerRadius="10" Padding="14" HasShadow="False" BackgroundColor="White" Margin="0,0,0,8">
+                                <Grid ColumnDefinitions="60,*,Auto" ColumnSpacing="12">
+                                    
+                                    <!-- Ícono -->
+                                    <Frame BorderColor="#3B82F6" CornerRadius="8" Padding="0" BackgroundColor="#EFF6FF" Grid.Column="0" WidthRequest="60" HeightRequest="60" HorizontalOptions="Center" VerticalOptions="Center">
+                                        <Label 
+                                            Text="" 
+                                            FontSize="32"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center"/>
+                                    </Frame>
 
-                    <Frame Margin="5">
+                                    <!-- Información -->
+                                    <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                                        <Label 
+                                            Text="{Binding .}" 
+                                            FontSize="16"
+                                            FontAttributes="Bold"
+                                            TextColor="#1F2937"/>
+                                        <Label 
+                                            Text="Stock: 125 unidades" 
+                                            FontSize="12"
+                                            TextColor="#6B7280"/>
+                                        <Label 
+                                            Text="Precio: $15.50" 
+                                            FontSize="12"
+                                            TextColor="#10B981"
+                                            FontAttributes="Bold"/>
+                                    </VerticalStackLayout>
 
-                        <VerticalStackLayout>
+                                    <!-- Acciones -->
+                                    <VerticalStackLayout Grid.Column="2" Spacing="6" VerticalOptions="Center">
+                                        <Button 
+                                            Text="" 
+                                            BackgroundColor="#3B82F6"
+                                            TextColor="White"
+                                            FontSize="14"
+                                            CornerRadius="6"
+                                            Padding="8,4"
+                                            WidthRequest="40"
+                                            HeightRequest="32"
+                                            Clicked="OnEditProductClicked"/>
+                                        <Button 
+                                            Text="" 
+                                            BackgroundColor="#EF4444"
+                                            TextColor="White"
+                                            FontSize="14"
+                                            CornerRadius="6"
+                                            Padding="8,4"
+                                            WidthRequest="40"
+                                            HeightRequest="32"
+                                            Clicked="OnDeleteProductClicked"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
-                            <Label
-                                Text="{Binding Name}"
-                                FontAttributes="Bold"/>
+                <!-- Espacio al final -->
+                <BoxView HeightRequest="20"/>
 
-                            <Label
-                                Text="{Binding Stock}"/>
-
-                        </VerticalStackLayout>
-
-                    </Frame>
-
-                </DataTemplate>
-
-            </CollectionView.ItemTemplate>
-
-        </CollectionView>
+            </VerticalStackLayout>
+        </ScrollView>
 
     </Grid>
 
