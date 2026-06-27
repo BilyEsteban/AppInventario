@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="AppInventario/AppInventario.csproj" />
+  <Project Path="AppInventario/AppInventario.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
 </Solution>

@@ -11,7 +11,8 @@ namespace AppInventario
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new AppShell());
+            var shell = Application.Current?.Handler?.MauiContext?.Services.GetService<AppShell>();
+            return new Window(shell ?? new AppShell());
         }
     }
 }

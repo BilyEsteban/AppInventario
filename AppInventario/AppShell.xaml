@@ -11,4 +11,10 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
+        <ShellContent
+            Title="Usuarios"
+            Icon="user.png"
+            ContentTemplate="{DataTemplate views:UsersPage}"
+            Route="users" />
+    </TabBar>
 </Shell>

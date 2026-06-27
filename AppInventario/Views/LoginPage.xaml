@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:AppInventario.ViewsModels"
     x:Class="AppInventario.Views.LoginPage"
-    Title="Login">
+    x:DataType="viewmodels:LoginPageViewModel"
+    Title="Login"
+    Shell.TabBarIsVisible="False"
+    BackgroundColor="#1E3A8A">
 
     <VerticalStackLayout
         Padding="30"
@@ -15,15 +20,127 @@
             FontAttributes="Bold"
             HorizontalOptions="Center"/>
 
-        <Entry
-            Placeholder="Usuario"/>
+                    <!-- Usuario -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label 
+                            Text="Usuario o Email" 
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="#1F2937"/>
+                        <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                            <Entry
+                                Text="{Binding Email}"
+                                Placeholder="ej: usuario@ejemplo.com"
+                                FontSize="14"
+                                PlaceholderColor="#9CA3AF"
+                                />
+                        </Frame>
+                    </VerticalStackLayout>
 
-        <Entry
-            Placeholder="Contraseña"
-            IsPassword="True"/>
+                    <!-- Contraseña -->
+                    <VerticalStackLayout Spacing="6">
+                        <Label 
+                            Text="Contraseña" 
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="#1F2937"/>
+                        <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                            <Entry
+                                Text="{Binding Password}"
+                                Placeholder="Ingresa tu contraseña"
+                                IsPassword="True"
+                                FontSize="14"
+                                PlaceholderColor="#9CA3AF"
+                                />
+                        </Frame>
+                    </VerticalStackLayout>
 
-        <Button
-            Text="Iniciar Sesión"/>
+                    <!-- Recordarme & Olvidé contraseña -->
+                    <Grid ColumnDefinitions="*,*">
+                        <CheckBox Margin="0,0,10,0"/>
+                        <Label 
+                            Text="Recuérdame"
+                            FontSize="12"
+                            TextColor="#6B7280"
+                            VerticalOptions="Center"
+                            Margin="0,0,0,0"/>
+                        <Label 
+                            Text="¿Olvidaste tu contraseña?"
+                            FontSize="12"
+                            TextColor="#3B82F6"
+                            Grid.Column="1"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"/>
+                    </Grid>
+
+                    <!-- Botón Iniciar Sesión -->
+                    <Button
+                        Text="Iniciar Sesión"
+                        BackgroundColor="#3B82F6"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        Padding="0,14"
+                        FontSize="16"
+                        Clicked="OnLoginClicked"/>
+
+                    <!-- Divisor -->
+                    <Grid ColumnDefinitions="*,Auto,*" ColumnSpacing="10" Margin="0,10">
+                        <BoxView BackgroundColor="#E5E7EB" HeightRequest="1" VerticalOptions="Center"/>
+                        <Label 
+                            Text="O"
+                            FontSize="12"
+                            TextColor="#9CA3AF"
+                            Grid.Column="1"/>
+                        <BoxView BackgroundColor="#E5E7EB" HeightRequest="1" VerticalOptions="Center" Grid.Column="2"/>
+                    </Grid>
+
+                    <!-- Botones Sociales -->
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <Button
+                            Text="Google"
+                            BackgroundColor="#F3F4F6"
+                            TextColor="#1F2937"
+                            CornerRadius="8"
+                            Padding="0,12"
+                            FontSize="14"/>
+                        <Button
+                            Text="Microsoft"
+                            BackgroundColor="#F3F4F6"
+                            TextColor="#1F2937"
+                            CornerRadius="8"
+                            Padding="0,12"
+                            FontSize="14"
+                            Grid.Column="1"/>
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+            <!-- Registro -->
+            <VerticalStackLayout Spacing="0" HorizontalOptions="Center">
+                <Label
+                    Text="¿No tienes cuenta?"
+                    FontSize="13"
+                    TextColor="#E0E7FF"
+                    HorizontalOptions="Center"/>
+                <Label
+                    Text="Crea una aquí"
+                    FontSize="13"
+                    TextColor="#FCD34D"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnRegisterTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </VerticalStackLayout>
+
+            <!-- Espacio -->
+            <BoxView HeightRequest="20"/>
+
+        </VerticalStackLayout>
 
     </VerticalStackLayout>
 
