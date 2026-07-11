@@ -2,35 +2,37 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewmodels="clr-namespace:AppInventario.ViewsModels"
     x:Class="AppInventario.Views.RegisterPage"
-    x:DataType="viewmodels:RegisterPageViewModel"
     Title="Registro"
     Shell.TabBarIsVisible="False"
+    Shell.FlyoutBehavior="Disabled"
     BackgroundColor="#1E3A8A">
 
     <VerticalStackLayout Spacing="0" VerticalOptions="Fill">
 
-        <VerticalStackLayout Padding="30,50,30,30" Spacing="10" VerticalOptions="Start">
-            <Label
-                Text="📋"
-                FontSize="64"
-                HorizontalOptions="Center" />
-            <Label
-                Text="Crear cuenta"
-                FontSize="32"
-                FontAttributes="Bold"
-                HorizontalOptions="Center"
-                TextColor="White" />
-            <Label
-                Text="Regístrate para administrar tu inventario"
-                FontSize="16"
-                HorizontalOptions="Center"
-                TextColor="#E0E7FF"
-                Opacity="0.9" />
-        </VerticalStackLayout>
+            <VerticalStackLayout Padding="15,20,15,20" Spacing="10" VerticalOptions="Start">
+                <Label
+                    Text="📋"
+                    FontSize="40"
+                    HorizontalOptions="Center" />
+                <Label
+                    Text="Crear cuenta"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    TextColor="White" />
+                <Label
+                    Text="Regístrate para administrar tu inventario"
+                    FontSize="14"
+                    HorizontalOptions="Center"
+                    TextColor="#E0E7FF"
+                    Opacity="0.9" />
+            </VerticalStackLayout>
 
-        <VerticalStackLayout Padding="30" Spacing="16" VerticalOptions="End">
+            <ScrollView>
+            <VerticalStackLayout Padding="10" Spacing="10" VerticalOptions="End">
             <Frame
                 BorderColor="#3B82F6"
                 CornerRadius="15"
@@ -41,41 +43,51 @@
 
                     <Label
                         Text="Registro"
-                        FontSize="24"
+                        FontSize="20"
                         FontAttributes="Bold"
                         TextColor="#1E3A8A"
                         HorizontalOptions="Center" />
 
                     <VerticalStackLayout Spacing="6">
-                        <Label
+                            <Label
                             Text="Correo electrónico"
                             FontSize="12"
                             FontAttributes="Bold"
                             TextColor="#1F2937" />
-                        <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
                             <Entry
                                 Text="{Binding Email}"
                                 Placeholder="ej: usuario@ejemplo.com"
                                 Keyboard="Email"
+                                TextColor="black"
                                 FontSize="14"
                                 PlaceholderColor="#9CA3AF" />
-                        </Frame>
-                    </VerticalStackLayout>
+                            <Label
+                                Text="{Binding EmailError}"
+                                IsVisible="{Binding HasEmailError}"
+                                FontSize="11"
+                                TextColor="#EF4444"
+                                Margin="4,2,0,0" />
+                        </VerticalStackLayout>
 
                     <VerticalStackLayout Spacing="6">
-                        <Label
+                            <Label
                             Text="Usuario"
                             FontSize="12"
                             FontAttributes="Bold"
                             TextColor="#1F2937" />
-                        <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
                             <Entry
                                 Text="{Binding Username}"
                                 Placeholder="Nombre de usuario"
                                 FontSize="14"
+                                 TextColor="black"
                                 PlaceholderColor="#9CA3AF" />
-                        </Frame>
-                    </VerticalStackLayout>
+                            <Label
+                                Text="{Binding UsernameError}"
+                                IsVisible="{Binding HasUsernameError}"
+                                FontSize="11"
+                                TextColor="#EF4444"
+                                Margin="4,2,0,0" />
+                        </VerticalStackLayout>
 
                     <VerticalStackLayout Spacing="6">
                         <Label
@@ -83,15 +95,43 @@
                             FontSize="12"
                             FontAttributes="Bold"
                             TextColor="#1F2937" />
-                        <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                        
                             <Entry
                                 Text="{Binding Password}"
                                 Placeholder="Ingresa tu contraseña"
                                 IsPassword="True"
                                 FontSize="14"
+                                 TextColor="black"
                                 PlaceholderColor="#9CA3AF" />
-                        </Frame>
-                    </VerticalStackLayout>
+                            <Label
+                                Text="{Binding PasswordError}"
+                                IsVisible="{Binding HasPasswordError}"
+                                FontSize="11"
+                                TextColor="#EF4444"
+                                Margin="4,2,0,0" />
+                        </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label
+                            Text="Confirmar contraseña *"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="#1F2937" />
+                        
+                            <Entry
+                                Text="{Binding ConfirmPassword}"
+                                Placeholder="Confirma tu contraseña"
+                                IsPassword="True"
+                                 TextColor="black"
+                                FontSize="14"
+                                PlaceholderColor="#9CA3AF" />
+                            <Label
+                                Text="{Binding ConfirmPasswordError}"
+                                IsVisible="{Binding HasConfirmPasswordError}"
+                                FontSize="11"
+                                TextColor="#EF4444"
+                                Margin="4,2,0,0" />
+                        </VerticalStackLayout>
 
                     <VerticalStackLayout Spacing="6">
                         <Label
@@ -104,27 +144,47 @@
                                 Text="{Binding FullName}"
                                 Placeholder="Nombre completo"
                                 FontSize="14"
+                                TextColor="black"
                                 PlaceholderColor="#9CA3AF" />
                         </Frame>
                     </VerticalStackLayout>
 
                     <VerticalStackLayout Spacing="6">
-                        <Label
+                            <Label
                             Text="Teléfono"
                             FontSize="12"
                             FontAttributes="Bold"
                             TextColor="#1F2937" />
-                        <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
                             <Entry
-                                Text="{Binding Phone}"
-                                Placeholder="Opcional"
-                                Keyboard="Telephone"
-                                FontSize="14"
-                                PlaceholderColor="#9CA3AF" />
-                        </Frame>
-                    </VerticalStackLayout>
+                                    Text="{Binding Phone}"
+                                    Placeholder="Ej: (809) 123-4567"
+                                    Keyboard="Numeric"
+                                    FontSize="14"
+                                    TextColor="Black"
+                                    PlaceholderColor="#9CA3AF"
+                                    MaxLength="14">
+                                <Entry.Behaviors>
+                                    <toolkit:MaskedBehavior 
+                                        Mask="(XXX) XXX-XXXX"/>
+                                </Entry.Behaviors>
+                            </Entry>
+                            <Label
+                                Text="{Binding PhoneError}"
+                                IsVisible="{Binding HasPhoneError}"
+                                FontSize="11"
+                                TextColor="#EF4444"
+                                Margin="4,2,0,0" />
+                        </VerticalStackLayout>
 
-                    <Button
+                        <Label
+                            Text="{Binding GeneralError}"
+                            IsVisible="{Binding HasGeneralError}"
+                            FontSize="12"
+                            TextColor="#EF4444"
+                            HorizontalOptions="Center"
+                            Margin="0,4" />
+
+                        <Button
                         Text="Crear cuenta"
                         BackgroundColor="#3B82F6"
                         TextColor="White"
@@ -132,6 +192,7 @@
                         CornerRadius="10"
                         Padding="0,14"
                         FontSize="16"
+                        IsEnabled="{Binding IsBusy,Converter={StaticResource InverseBoolConverter}}"
                         Clicked="OnRegisterClicked" />
 
                 </VerticalStackLayout>
@@ -157,5 +218,6 @@
 
             <BoxView HeightRequest="20" />
         </VerticalStackLayout>
+        </ScrollView>
     </VerticalStackLayout>
 </ContentPage>

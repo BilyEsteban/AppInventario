@@ -4,29 +4,33 @@ namespace AppInventario.Views;
 
 public partial class RegisterPage : ContentPage
 {
+    private readonly RegisterPageViewModel _viewModel;
     public RegisterPage(RegisterPageViewModel viewModel)
     {
         InitializeComponent();
-        BindingContext = viewModel;
+        _viewModel = viewModel;
+        BindingContext = _viewModel;
     }
 
     private async void OnRegisterClicked(object sender, EventArgs e)
     {
-        if (BindingContext is not RegisterPageViewModel viewModel)
+        try
         {
-            return;
-        }
+            var response = await _viewModel.RegisterAsync();
 
-        var response = await viewModel.RegisterAsync();
-        if (response.Success)
+            if (response.Success)
+            {                
+                await DisplayAlertAsync("Registro exitoso", response.Message, "Aceptar");
+            }
+
+            await DisplayAlertAsync("Error de registro", response.Message, "Aceptar");
+        }
+        catch (Exception ex)
         {
-            await DisplayAlertAsync("Registro correcto", response.Message, "Aceptar");
-            await Shell.Current.GoToAsync("//main");
-            return;
+            await DisplayAlertAsync("Error", $"Ocurrió un error: {ex.Message}", "Aceptar");
         }
-
-        await DisplayAlertAsync("Error", response.Message, "Aceptar");
     }
+
 
     private async void OnLoginTapped(object sender, TappedEventArgs e)
     {
