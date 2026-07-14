@@ -1,5 +1,6 @@
 ﻿using AppInventario.ViewsModels;
 using AppInventario.Models;
+using AppInventario.Views;
 using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
 
@@ -17,12 +18,12 @@ namespace AppInventario
                 ?? throw new InvalidOperationException("No auth service available.");
 
             // Registrar rutas de navegación
-            Routing.RegisterRoute("main", typeof(MainPage));
-            Routing.RegisterRoute("products", typeof(ProductPage));
-            Routing.RegisterRoute("users", typeof(UsersPage));
-            Routing.RegisterRoute("productform", typeof(ProductFormPage));
-            Routing.RegisterRoute("login", typeof(LoginPage));
-            Routing.RegisterRoute("register", typeof(RegisterPage));
+            Routing.RegisterRoute("main", typeof(Views.MainPage));
+            Routing.RegisterRoute("products", typeof(Views.ProductPage));
+            Routing.RegisterRoute("users", typeof(Views.UsersPage));
+            Routing.RegisterRoute("productform", typeof(Views.ProductFormPage));
+            Routing.RegisterRoute("login", typeof(Views.LoginPage));
+            Routing.RegisterRoute("register", typeof(Views.RegisterPage));
 
             Navigating += OnShellNavigating;
         }
@@ -31,10 +32,20 @@ namespace AppInventario
         {
             base.OnAppearing();
 
-            var currentUser = await _authService.GetCurrentUserAsync();
-            if (currentUser == null)
-            {
-                await Shell.Current.GoToAsync("//login");
+            var token = Preferences.Get("auth_token", string.Empty);
+            var isvalid = await _authService.ValidateTokenAsync(token);
+
+            if(!isvalid){
+
+                await Current.GoToAsync("//login");
+            }
+            else{
+
+                var currentPage = Current.CurrentPage;
+                if (currentPage is Views.LoginPage || currentPage is Views.RegisterPage)
+                {
+                    await Current.GoToAsync("//main");
+                }
             }
         }
 
@@ -55,11 +66,14 @@ namespace AppInventario
             var protectedRoutes = new[] { "main", "products", "users", "productform" };
             if (protectedRoutes.Contains(route))
             {
-                var currentUser = await _authService.GetCurrentUserAsync();
-                if (currentUser == null)
+                var token = Preferences.Get("auth_token", string.Empty);
+                var isValid = await _authService.ValidateTokenAsync(token);
+                
+                if (!isValid)
                 {
                     e.Cancel();
-                    await Shell.Current.GoToAsync("//login");
+                    await Current.GoToAsync("//login");
+                    return;
                 }
             }
         }

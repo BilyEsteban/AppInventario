@@ -1,65 +1,96 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    x:Class="InventoryApp.Views.MainPage"
-    Title="Inicio">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="AppInventario.Views.MainPage"
+    Title="Inventario"
+    BackgroundColor="White">
 
-    <Grid RowDefinitions="Auto,*" Padding="0">
-        
-        <!-- Header -->
-        <Grid RowDefinitions="Auto" Padding="20,15" BackgroundColor="#1E3A8A" ColumnDefinitions="*,Auto">
-            <VerticalStackLayout Spacing="5">
-                <Label 
-                    Text="AppInventario" 
-                    FontSize="28" 
-                    FontAttributes="Bold"
-                    TextColor="White"/>
-                <Label 
-                    Text="Gestión de Inventario" 
-                    FontSize="14"
-                    TextColor="#E0E7FF"
-                    Opacity="0.9"/>
-            </VerticalStackLayout>
-            <Button
-                Text="Cerrar sesión"
-                Grid.Column="1"
-                BackgroundColor="Transparent"
-                TextColor="White"
-                BorderColor="White"
-                BorderWidth="1"
-                CornerRadius="18"
-                Padding="12,8"
-                FontSize="12"
-                HorizontalOptions="End"
-                VerticalOptions="Center"
-                Clicked="OnLogoutClicked" />
-        </Grid>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Settings" Order="Secondary" Priority="0" />
+        <ToolbarItem Text="Usuarios" Clicked="OnUsersClicked" Order="Secondary" Priority="1" />
+        <ToolbarItem Text="About" Order="Secondary" Priority="2" />
+        <ToolbarItem Text="Help" Order="Secondary" Priority="3" />
+        <ToolbarItem Text="Cerrar Sesion" Clicked="OnLogoutClicked" Order="Secondary" Priority="100" />
+    </ContentPage.ToolbarItems>
 
-            <Label
-                Text="Bienvenido"
-                FontSize="30"
-                FontAttributes="Bold"/>
-
-            <Frame Margin="0,20">
-
-                <VerticalStackLayout>
-
-                    <Label Text="Productos"/>
-                    <Label Text="125"/>
-
+    <ScrollView>
+        <VerticalStackLayout Padding="0" Spacing="0">
+            
+            <!-- Header -->
+           <!-- <Grid RowDefinitions="Auto" Padding="20,15" BackgroundColor="#1E3A8A" ColumnDefinitions="*,Auto">
+                <VerticalStackLayout Spacing="5">
+                    <Label 
+                        Text="AppInventario" 
+                        FontSize="28" 
+                        FontAttributes="Bold"
+                        TextColor="White"/>
+                    <Label 
+                        Text="Gestión de Inventario" 
+                        FontSize="14"
+                        TextColor="#E0E7FF"
+                        Opacity="0.9"/>
                 </VerticalStackLayout>
+                <ImageButton HeightRequest="36"
+                     WidthRequest="36"
+                     BorderWidth="0"
+                     Background="Transparent">
+                    <ImageButton.Source>
+                        <FontImageSource Size="16"
+                                 Glyph="&#xE713;"
+                                 FontFamily="SegoeMDL2"/>
+                    </ImageButton.Source>
+                </ImageButton>
+                <Button
+                    Text="Cerrar sesión"
+                    Grid.Column="1"
+                    BackgroundColor="Transparent"
+                    TextColor="White"
+                    BorderColor="White"
+                    BorderWidth="1"
+                    CornerRadius="18"
+                    Padding="12,8"
+                    FontSize="12"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    Clicked="OnLogoutClicked" />
+            </Grid> -->
 
-            </Frame>
+            <!-- Contenido Principal -->
+            <VerticalStackLayout Padding="20" Spacing="16">
+                
+                <Label
+                    Text="Bienvenido"
+                    FontSize="30"
+                    FontAttributes="Bold"
+                    TextColor="#1F2937"/>
 
-            <Frame>
+                <!-- Tarjeta de Productos -->
+                <Frame BorderColor="#E5E7EB" CornerRadius="12" Padding="16" BackgroundColor="White" HasShadow="False">
+                    <HorizontalStackLayout Spacing="40">
+                        <VerticalStackLayout Spacing="15">                            
+                            <Label Text="Productos" FontSize="14" TextColor="#6B7280" FontAttributes="Bold"/>
+                            <Label Text="125" FontSize="32" TextColor="#3B82F6" FontAttributes="Bold"/>
+                        </VerticalStackLayout> 
+                        
+                        <VerticalStackLayout Spacing="15">                            
+                            <Label Text="Bajo Stock" FontSize="14" TextColor="#6B7280" FontAttributes="Bold"/>
+                            <Label Text="125" FontSize="32" TextColor="#3B82F6" FontAttributes="Bold"/>
+                        </VerticalStackLayout>  
+                        
+                        <VerticalStackLayout Spacing="15">                            
+                            <Label Text="Productos" FontSize="14" TextColor="#6B7280" FontAttributes="Bold"/>
+                            <Label Text="125" FontSize="32" TextColor="#3B82F6" FontAttributes="Bold"/>
+                        </VerticalStackLayout>                        
+                    </HorizontalStackLayout>
+                </Frame>
 
                 <!-- Acciones Rápidas -->
                 <Label 
                     Text="Acciones Rápidas" 
                     FontSize="18"
                     FontAttributes="Bold"
-                    TextColor="#1F2937"
-                    Margin="0,8,0,0"/>
+                    TextColor="#1F2937"/>
 
                 <Grid ColumnDefinitions="*,*" RowSpacing="12" ColumnSpacing="12">
                     
@@ -72,19 +103,9 @@
                         CornerRadius="10"
                         Padding="16,20"
                         FontSize="14"
+                        Grid.Column="1"
                         Clicked="OnProductsClicked"/>
-
-                    <!-- Botón Agregar Producto -->
-                    <Button 
-                        Text="Nuevo Producto" 
-                        BackgroundColor="#10B981"
-                        TextColor="White"
-                        FontAttributes="Bold"
-                        CornerRadius="10"
-                        Padding="16,20"
-                        FontSize="14"
-                        Clicked="OnAddProductClicked"/>
-
+                    
                     <!-- Botón Reportes -->
                     <Button 
                         Text="Reportes" 
@@ -94,29 +115,8 @@
                         CornerRadius="10"
                         Padding="16,20"
                         FontSize="14"
-                        Clicked="OnReportsClicked"/>
-
-                    <!-- Botón Usuarios -->
-                    <Button 
-                        Text="Usuarios" 
-                        BackgroundColor="#3B82F6"
-                        TextColor="White"
-                        FontAttributes="Bold"
-                        CornerRadius="10"
-                        Padding="16,20"
-                        FontSize="14"
-                        Clicked="OnUsersClicked"/>
-
-                    <!-- Botón Configuración -->
-                    <Button 
-                        Text="Configuración" 
-                        BackgroundColor="#8B5CF6"
-                        TextColor="White"
-                        FontAttributes="Bold"
-                        CornerRadius="10"
-                        Padding="16,20"
-                        FontSize="14"
-                        Clicked="OnSettingsClicked"/>
+                        Grid.Row="1"
+                        Clicked="OnProductsClicked"/>                   
 
                 </Grid>
 
@@ -134,7 +134,7 @@
                     <Frame BorderColor="#E5E7EB" CornerRadius="10" Padding="14" HasShadow="False" BackgroundColor="White">
                         <Grid ColumnDefinitions="50,*,Auto" ColumnSpacing="12" RowSpacing="4">
                             <Label 
-                                Text="" 
+                                Text="📦" 
                                 FontSize="28"
                                 VerticalOptions="Center"/>
                             <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
@@ -159,10 +159,9 @@
 
                 </VerticalStackLayout>
 
-            </Frame>
+            </VerticalStackLayout>
 
         </VerticalStackLayout>
-
     </ScrollView>
 
 </ContentPage>

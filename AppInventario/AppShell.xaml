@@ -4,12 +4,42 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:AppInventario"
+    xmlns:views="clr-namespace:AppInventario.Views"
     Title="AppInventario">
 
+    <!-- Rutas Públicas (sin autenticación) -->
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Login"
+        Icon="login.png"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="login" />
+
+    <ShellContent
+        Title="Registro"
+        Icon="register.png"
+        ContentTemplate="{DataTemplate views:RegisterPage}"
+        Route="register" />
+
+    <!-- Rutas Protegidas (requieren autenticación) -->
+    <FlyoutItem Route="main" FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="Inicio"
+            Icon="home.png"
+            ContentTemplate="{DataTemplate views:MainPage}" />
+    </FlyoutItem>
+
+    <TabBar>
+        <ShellContent
+            Title="Productos"
+            Icon="product.png"
+            ContentTemplate="{DataTemplate views:ProductPage}"
+            Route="products" />
+
+        <ShellContent
+            Title="Nuevo Producto"
+            Icon="add.png"
+            ContentTemplate="{DataTemplate views:ProductFormPage}"
+            Route="productform" />
 
         <ShellContent
             Title="Usuarios"
@@ -17,4 +47,5 @@
             ContentTemplate="{DataTemplate views:UsersPage}"
             Route="users" />
     </TabBar>
+
 </Shell>

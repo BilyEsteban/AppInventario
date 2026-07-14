@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AppInventario.ViewsModels
 {
-    internal class ProductFormPage
+    public class ProductFormPageViewModel
     {
     }
 }

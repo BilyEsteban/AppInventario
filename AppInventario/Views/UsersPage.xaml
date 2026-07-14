@@ -57,7 +57,7 @@
             ItemsLayout="VerticalList"
             EmptyView="No hay usuarios registrados aún.">
             <CollectionView.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="models:User">
                     <Frame
                         BorderColor="#E5E7EB"
                         CornerRadius="12"
