@@ -4,12 +4,22 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:AppInventario"
+    xmlns:views="clr-namespace:AppInventario.Views"
     Title="AppInventario">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <!-- Tab Bar Principal -->
+    <TabBar>
+        <ShellContent
+            Title="Inicio"
+            Icon="home.png"
+            ContentTemplate="{DataTemplate views:MainPage}"
+            Route="main" />
+
+        <ShellContent
+            Title="Productos"
+            Icon="products.png"
+            ContentTemplate="{DataTemplate views:ProductPage}"
+            Route="products" />
 
         <ShellContent
             Title="Usuarios"

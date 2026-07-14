@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    x:Class="InventoryApp.Views.MainPage"
-    Title="Inicio">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="AppInventario.Views.MainPage"
+    Title="Inventario"
+    BackgroundColor="#F8F9FA">
 
     <Grid RowDefinitions="Auto,*" Padding="0">
         
@@ -35,21 +37,116 @@
                 Clicked="OnLogoutClicked" />
         </Grid>
 
-            <Label
-                Text="Bienvenido"
-                FontSize="30"
-                FontAttributes="Bold"/>
+        <!-- Contenido Principal -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="16" Spacing="16">
 
-            <Frame Margin="0,20">
+                <!-- Tarjeta de Bienvenida -->
+                <Frame BorderColor="#3B82F6" CornerRadius="15" Padding="20" HasShadow="True" BackgroundColor="White">
+                    <VerticalStackLayout Spacing="10">
+                        <Label 
+                            Text="¡Bienvenido!" 
+                            FontSize="24" 
+                            FontAttributes="Bold"
+                            TextColor="#1E3A8A"/>
+                        <Label 
+                            Text="Administra tu inventario de forma rápida y eficiente" 
+                            FontSize="14"
+                            TextColor="#6B7280"
+                            LineBreakMode="WordWrap"/>
+                    </VerticalStackLayout>
+                </Frame>
 
-                <VerticalStackLayout>
+                <!-- Estadísticas Grid -->
+                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                    
+                    <!-- Total Productos -->
+                    <Frame BorderColor="#10B981" CornerRadius="12" Padding="16" HasShadow="True" BackgroundColor="White">
+                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                            <Label 
+                                Text="📊" 
+                                FontSize="36"
+                                HorizontalOptions="Center"/>
+                            <Label 
+                                Text="Total Productos" 
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="#065F46"
+                                HorizontalOptions="Center"/>
+                            <Label 
+                                Text="1,250" 
+                                FontSize="28"
+                                FontAttributes="Bold"
+                                TextColor="#10B981"
+                                HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Frame>
 
-                    <Label Text="Productos"/>
-                    <Label Text="125"/>
+                    <!-- Stock Bajo -->
+                    <Frame BorderColor="#EF4444" CornerRadius="12" Padding="16" HasShadow="True" BackgroundColor="White">
+                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                            <Label 
+                                Text="" 
+                                FontSize="36"
+                                HorizontalOptions="Center"/>
+                            <Label 
+                                Text="Stock Bajo" 
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="#7F1D1D"
+                                HorizontalOptions="Center"/>
+                            <Label 
+                                Text="45" 
+                                FontSize="28"
+                                FontAttributes="Bold"
+                                TextColor="#EF4444"
+                                HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Frame>
 
-                </VerticalStackLayout>
+                    <!-- Categorías -->
+                    <Frame BorderColor="#F59E0B" CornerRadius="12" Padding="16" HasShadow="True" BackgroundColor="White">
+                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                            <Label 
+                                Text="" 
+                                FontSize="36"
+                                HorizontalOptions="Center"/>
+                            <Label 
+                                Text="Categorías" 
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="#92400E"
+                                HorizontalOptions="Center"/>
+                            <Label 
+                                Text="28" 
+                                FontSize="28"
+                                FontAttributes="Bold"
+                                TextColor="#F59E0B"
+                                HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Frame>
 
-            </Frame>
+                    <!-- Últimas Ventas -->
+                    <Frame BorderColor="#8B5CF6" CornerRadius="12" Padding="16" HasShadow="True" BackgroundColor="White">
+                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                            <Label 
+                                Text="" 
+                                FontSize="36"
+                                HorizontalOptions="Center"/>
+                            <Label 
+                                Text="Hoy" 
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                TextColor="#4C1D95"
+                                HorizontalOptions="Center"/>
+                            <Label 
+                                Text="$12.5K" 
+                                FontSize="28"
+                                FontAttributes="Bold"
+                                TextColor="#8B5CF6"
+                                HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
+                    </Frame>
 
             <Frame>
 
@@ -157,12 +254,68 @@
                         </Grid>
                     </Frame>
 
+                    <!-- Movimiento 2 -->
+                    <Frame BorderColor="#E5E7EB" CornerRadius="10" Padding="14" HasShadow="False" BackgroundColor="White">
+                        <Grid ColumnDefinitions="50,*,Auto" ColumnSpacing="12" RowSpacing="4">
+                            <Label 
+                                Text="" 
+                                FontSize="28"
+                                VerticalOptions="Center"/>
+                            <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                <Label 
+                                    Text="Salida de Stock" 
+                                    FontSize="14"
+                                    FontAttributes="Bold"
+                                    TextColor="#1F2937"/>
+                                <Label 
+                                    Text="Producto: Arandelas - 200 unidades" 
+                                    FontSize="12"
+                                    TextColor="#6B7280"/>
+                            </VerticalStackLayout>
+                            <Label 
+                                Text="Hace 5h" 
+                                FontSize="12"
+                                TextColor="#9CA3AF"
+                                Grid.Column="2"
+                                VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- Movimiento 3 -->
+                    <Frame BorderColor="#E5E7EB" CornerRadius="10" Padding="14" HasShadow="False" BackgroundColor="White">
+                        <Grid ColumnDefinitions="50,*,Auto" ColumnSpacing="12" RowSpacing="4">
+                            <Label 
+                                Text="" 
+                                FontSize="28"
+                                VerticalOptions="Center"/>
+                            <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                <Label 
+                                    Text="Stock Bajo Detectado" 
+                                    FontSize="14"
+                                    FontAttributes="Bold"
+                                    TextColor="#1F2937"/>
+                                <Label 
+                                    Text="Producto: Tuercas M5 - Solo 15 unidades" 
+                                    FontSize="12"
+                                    TextColor="#6B7280"/>
+                            </VerticalStackLayout>
+                            <Label 
+                                Text="Hace 1h" 
+                                FontSize="12"
+                                TextColor="#9CA3AF"
+                                Grid.Column="2"
+                                VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+
                 </VerticalStackLayout>
 
-            </Frame>
+                <!-- Espacio al final -->
+                <BoxView HeightRequest="20"/>
 
-        </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
 
-    </ScrollView>
+    </Grid>
 
 </ContentPage>

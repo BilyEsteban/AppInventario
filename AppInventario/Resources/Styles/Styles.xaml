@@ -20,40 +20,7 @@
 
     <Style TargetType="BoxView">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
-    </Style>
-
-    <Style TargetType="Button">
-
-        <Setter Property="BackgroundColor"
-            Value="{StaticResource Primary}"/>
-
-        <Setter Property="TextColor"
-            Value="White"/>
-
-        <Setter Property="CornerRadius"
-            Value="10"/>
-
-        <Setter Property="HeightRequest"
-            Value="50"/>
-
-    </Style>
-
-    <Style TargetType="Entry">
-
-        <Setter Property="BackgroundColor"
-            Value="#F8F9FA"/>
-
-        <Setter Property="Margin"
-            Value="0,5"/>
-
-    </Style>
-
-    <Style TargetType="Label">
-
-        <Setter Property="TextColor"
-            Value="{StaticResource TextPrimary}"/>
-
-    </Style>
+    </Style>    
 
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource PrimaryDarkText}}" />

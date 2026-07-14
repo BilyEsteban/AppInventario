@@ -5,13 +5,13 @@ namespace AppInventario.Views;
 public partial class LoginPage : ContentPage
 {
     public LoginPage(LoginPageViewModel viewModel)
-    {
-        InitializeComponent();
+	{
+		InitializeComponent();
         BindingContext = viewModel;
-    }
+	}
 
-    private async void OnLoginClicked(object sender, EventArgs e)
-    {
+	private async void OnLoginClicked(object sender, EventArgs e)
+	{		
         if (BindingContext is not LoginPageViewModel viewModel)
         {
             return;
@@ -32,5 +32,5 @@ public partial class LoginPage : ContentPage
     private async void OnRegisterTapped(object sender, TappedEventArgs e)
     {
         await Shell.Current.GoToAsync("//register");
-    }
+	}
 }
