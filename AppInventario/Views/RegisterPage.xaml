@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:AppInventario.ViewsModels"
+    x:Class="AppInventario.Views.RegisterPage"
+    x:DataType="viewmodels:RegisterPageViewModel"
+    Title="Registro"
+    Shell.TabBarIsVisible="False"
+    BackgroundColor="#1E3A8A">
+
+    <VerticalStackLayout Spacing="0" VerticalOptions="Fill">
+
+        <VerticalStackLayout Padding="30,50,30,30" Spacing="10" VerticalOptions="Start">
+            <Label
+                Text="📋"
+                FontSize="64"
+                HorizontalOptions="Center" />
+            <Label
+                Text="Crear cuenta"
+                FontSize="32"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="White" />
+            <Label
+                Text="Regístrate para administrar tu inventario"
+                FontSize="16"
+                HorizontalOptions="Center"
+                TextColor="#E0E7FF"
+                Opacity="0.9" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Padding="30" Spacing="16" VerticalOptions="End">
+            <Frame
+                BorderColor="#3B82F6"
+                CornerRadius="15"
+                Padding="20"
+                HasShadow="True"
+                BackgroundColor="White">
+                <VerticalStackLayout Spacing="16">
+
+                    <Label
+                        Text="Registro"
+                        FontSize="24"
+                        FontAttributes="Bold"
+                        TextColor="#1E3A8A"
+                        HorizontalOptions="Center" />
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label
+                            Text="Correo electrónico"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="#1F2937" />
+                        <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                            <Entry
+                                Text="{Binding Email}"
+                                Placeholder="ej: usuario@ejemplo.com"
+                                Keyboard="Email"
+                                FontSize="14"
+                                PlaceholderColor="#9CA3AF" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label
+                            Text="Usuario"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="#1F2937" />
+                        <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                            <Entry
+                                Text="{Binding Username}"
+                                Placeholder="Nombre de usuario"
+                                FontSize="14"
+                                PlaceholderColor="#9CA3AF" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label
+                            Text="Contraseña"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="#1F2937" />
+                        <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                            <Entry
+                                Text="{Binding Password}"
+                                Placeholder="Ingresa tu contraseña"
+                                IsPassword="True"
+                                FontSize="14"
+                                PlaceholderColor="#9CA3AF" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label
+                            Text="Nombre completo"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="#1F2937" />
+                        <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                            <Entry
+                                Text="{Binding FullName}"
+                                Placeholder="Nombre completo"
+                                FontSize="14"
+                                PlaceholderColor="#9CA3AF" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Spacing="6">
+                        <Label
+                            Text="Teléfono"
+                            FontSize="12"
+                            FontAttributes="Bold"
+                            TextColor="#1F2937" />
+                        <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                            <Entry
+                                Text="{Binding Phone}"
+                                Placeholder="Opcional"
+                                Keyboard="Telephone"
+                                FontSize="14"
+                                PlaceholderColor="#9CA3AF" />
+                        </Frame>
+                    </VerticalStackLayout>
+
+                    <Button
+                        Text="Crear cuenta"
+                        BackgroundColor="#3B82F6"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        Padding="0,14"
+                        FontSize="16"
+                        Clicked="OnRegisterClicked" />
+
+                </VerticalStackLayout>
+            </Frame>
+
+            <VerticalStackLayout Spacing="0" HorizontalOptions="Center">
+                <Label
+                    Text="¿Ya tienes cuenta?"
+                    FontSize="13"
+                    TextColor="#E0E7FF"
+                    HorizontalOptions="Center" />
+                <Label
+                    Text="Inicia sesión"
+                    FontSize="13"
+                    FontAttributes="Bold"
+                    TextColor="#FCD34D"
+                    HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLoginTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </VerticalStackLayout>
+
+            <BoxView HeightRequest="20" />
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

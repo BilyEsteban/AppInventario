@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:AppInventario.ViewsModels"
+    xmlns:models="clr-namespace:AppInventario.Models"
+    x:Class="AppInventario.Views.UsersPage"
+    x:DataType="viewmodels:UsersPageViewModel"
+    Title="Usuarios"
+    BackgroundColor="#F8F9FA">
+
+    <Grid Padding="16" RowDefinitions="Auto,Auto,*" RowSpacing="12">
+
+        <Grid RowDefinitions="Auto" ColumnDefinitions="*,Auto" Padding="0,0,0,8">
+            <VerticalStackLayout Spacing="2">
+                <Label
+                    Text="Lista de Usuarios"
+                    FontSize="24"
+                    FontAttributes="Bold"
+                    TextColor="#1E3A8A" />
+                <Label
+                    Text="Ver y agregar cuentas de usuario"
+                    FontSize="14"
+                    TextColor="#6B7280" />
+            </VerticalStackLayout>
+
+            <Button
+                Text="Agregar usuario"
+                BackgroundColor="#3B82F6"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="10"
+                Padding="14,10"
+                Clicked="OnAddUserClicked"
+                HorizontalOptions="End"
+                VerticalOptions="Center" />
+        </Grid>
+
+        <Frame
+            Grid.Row="1"
+            BorderColor="#E5E7EB"
+            CornerRadius="15"
+            Padding="16"
+            BackgroundColor="White"
+            HasShadow="True">
+            <Label
+                Text="Usuarios registrados"
+                FontSize="16"
+                FontAttributes="Bold"
+                TextColor="#1E3A8A" />
+        </Frame>
+
+        <CollectionView
+            Grid.Row="2"
+            ItemsSource="{Binding Users}"
+            SelectionMode="None"
+            ItemsLayout="VerticalList"
+            EmptyView="No hay usuarios registrados aún.">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame
+                        BorderColor="#E5E7EB"
+                        CornerRadius="12"
+                        Padding="14"
+                        HasShadow="False"
+                        BackgroundColor="White"
+                        Margin="0,0,0,10">
+                        <VerticalStackLayout Spacing="6">
+                            <Label
+                                Text="{Binding DisplayName}"
+                                FontSize="16"
+                                FontAttributes="Bold"
+                                TextColor="#1E3A8A" />
+                            <Label
+                                Text="{Binding Email}"
+                                FontSize="14"
+                                TextColor="#4B5563" />
+                            <Label
+                                Text="{Binding Username, StringFormat='Usuario: {0}'}"
+                                FontSize="12"
+                                TextColor="#6B7280" />
+                            <Label
+                                Text="{Binding Role, StringFormat='Rol: {0}'}"
+                                FontSize="12"
+                                TextColor="#6B7280" />
+                            <Label
+                                Text="{Binding IsActive, StringFormat='Activo: {0}'}"
+                                FontSize="12"
+                                TextColor="#6B7280" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+
+</ContentPage>

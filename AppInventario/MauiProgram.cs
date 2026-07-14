@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
+using System.IO;
 using AppInventario.Views;
 using AppInventario.ViewsModels;
+using AppInventario.Models;
 
 namespace AppInventario
 {
@@ -27,6 +29,8 @@ namespace AppInventario
             builder.Services.AddSingleton<ProductPage>();
             builder.Services.AddSingleton<ProductFormPage>();
             builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddSingleton<RegisterPage>();
+            builder.Services.AddSingleton<UsersPage>();
             builder.Services.AddSingleton<AppShell>();
 
             // Registrar ViewModels
@@ -34,6 +38,13 @@ namespace AppInventario
             builder.Services.AddSingleton<ProductPageViewModel>();
             builder.Services.AddSingleton<ProductFormPageViewModel>();
             builder.Services.AddSingleton<LoginPageViewModel>();
+            builder.Services.AddSingleton<RegisterPageViewModel>();
+            builder.Services.AddSingleton<UsersPageViewModel>();
+
+            // Registrar servicios de datos y autenticación
+            var dbPath = Path.Combine(FileSystem.AppDataDirectory, "inventario.db3");
+            builder.Services.AddSingleton<IDatabaseService>(new DatabaseService(dbPath));
+            builder.Services.AddSingleton<IAuthService>(new AuthService(dbPath));
 
 #if DEBUG
     		builder.Logging.AddDebug();

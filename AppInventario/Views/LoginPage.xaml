@@ -2,8 +2,11 @@
 <ContentPage 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:AppInventario.ViewsModels"
     x:Class="AppInventario.Views.LoginPage"
+    x:DataType="viewmodels:LoginPageViewModel"
     Title="Login"
+    Shell.TabBarIsVisible="False"
     BackgroundColor="#1E3A8A">
 
     <VerticalStackLayout
@@ -65,6 +68,7 @@
                             TextColor="#1F2937"/>
                         <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
                             <Entry
+                                Text="{Binding Email}"
                                 Placeholder="ej: usuario@ejemplo.com"
                                 FontSize="14"
                                 PlaceholderColor="#9CA3AF"
@@ -81,6 +85,7 @@
                             TextColor="#1F2937"/>
                         <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
                             <Entry
+                                Text="{Binding Password}"
                                 Placeholder="Ingresa tu contraseña"
                                 IsPassword="True"
                                 FontSize="14"
@@ -164,7 +169,11 @@
                     FontSize="13"
                     TextColor="#FCD34D"
                     FontAttributes="Bold"
-                    HorizontalOptions="Center"/>
+                    HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnRegisterTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
             </VerticalStackLayout>
 
             <!-- Espacio -->

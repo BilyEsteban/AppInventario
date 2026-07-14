@@ -22,6 +22,19 @@
                     TextColor="#E0E7FF"
                     Opacity="0.9"/>
             </VerticalStackLayout>
+            <Button
+                Text="Cerrar sesión"
+                Grid.Column="1"
+                BackgroundColor="Transparent"
+                TextColor="White"
+                BorderColor="White"
+                BorderWidth="1"
+                CornerRadius="18"
+                Padding="12,8"
+                FontSize="12"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                Clicked="OnLogoutClicked" />
         </Grid>
 
         <!-- Contenido Principal -->
@@ -135,7 +148,7 @@
                         </VerticalStackLayout>
                     </Frame>
 
-                </Grid>
+            <Frame>
 
                 <!-- Acciones Rápidas -->
                 <Label 
@@ -179,6 +192,17 @@
                         Padding="16,20"
                         FontSize="14"
                         Clicked="OnReportsClicked"/>
+
+                    <!-- Botón Usuarios -->
+                    <Button 
+                        Text="Usuarios" 
+                        BackgroundColor="#3B82F6"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        Padding="16,20"
+                        FontSize="14"
+                        Clicked="OnUsersClicked"/>
 
                     <!-- Botón Configuración -->
                     <Button 
