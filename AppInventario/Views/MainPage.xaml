@@ -189,4 +189,6 @@
         </VerticalStackLayout>
     </ScrollView>
 
+    </Grid>
+
 </ContentPage>

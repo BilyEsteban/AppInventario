@@ -3,39 +3,249 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="AppInventario.Views.ProductFormPage"
-    Title="Producto">
+    Title="Nuevo Producto"
+    BackgroundColor="#F8F9FA">
 
-    <ScrollView>
+    <Grid RowDefinitions="Auto,*" Padding="0">
+        
+        <!-- Header -->
+        <Grid RowDefinitions="Auto" Padding="20,15" BackgroundColor="#1E3A8A" ColumnDefinitions="*,Auto">
+            <VerticalStackLayout Spacing="5">
+                <Label 
+                    Text="Nuevo Producto" 
+                    FontSize="28" 
+                    FontAttributes="Bold"
+                    TextColor="White"/>
+                <Label 
+                    Text="Agregar artículo al inventario" 
+                    FontSize="14"
+                    TextColor="#E0E7FF"
+                    Opacity="0.9"/>
+            </VerticalStackLayout>
+        </Grid>
 
-        <VerticalStackLayout
-            Padding="20"
-            Spacing="15">
+        <!-- Contenido -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="16" Spacing="16">
 
-            <Entry Placeholder="Código"/>
+                <!-- Información Básica -->
+                <Frame BorderColor="#3B82F6" CornerRadius="12" Padding="16" HasShadow="True" BackgroundColor="White">
+                    <VerticalStackLayout Spacing="12">
+                        <Label 
+                            Text="Información Básica" 
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="#1E3A8A"/>
 
-            <Entry Placeholder="Nombre"/>
+                        <!-- Código -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label 
+                                Text="Código del Producto" 
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                TextColor="#1F2937"/>
+                            <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                                <Entry 
+                                    Placeholder="Ej: PROD-001"
+                                    FontSize="14"
+                                    PlaceholderColor="#9CA3AF"
+                                    />
+                            </Frame>
+                        </VerticalStackLayout>
 
-            <Editor
-                Placeholder="Descripción"
-                HeightRequest="120"/>
+                        <!-- Nombre -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label 
+                                Text="Nombre del Producto" 
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                TextColor="#1F2937"/>
+                            <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                                <Entry 
+                                    Placeholder="Ej: Tornillos M4"
+                                    FontSize="14"
+                                    PlaceholderColor="#9CA3AF"
+                                    />
+                            </Frame>
+                        </VerticalStackLayout>
 
-            <Entry
-                Placeholder="Precio Compra"
-                Keyboard="Numeric"/>
+                        <!-- Descripción -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label 
+                                Text="Descripción" 
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                TextColor="#1F2937"/>
+                            <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                                <Editor
+                                    Placeholder="Describe el producto..."
+                                    FontSize="14"
+                                    HeightRequest="100"
+                                    />
+                            </Frame>
+                        </VerticalStackLayout>
 
-            <Entry
-                Placeholder="Precio Venta"
-                Keyboard="Numeric"/>
+                    </VerticalStackLayout>
+                </Frame>
 
-            <Entry
-                Placeholder="Stock Inicial"
-                Keyboard="Numeric"/>
+                <!-- Precios -->
+                <Frame BorderColor="#10B981" CornerRadius="12" Padding="16" HasShadow="True" BackgroundColor="White">
+                    <VerticalStackLayout Spacing="12">
+                        <Label 
+                            Text="Información de Precios" 
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="#065F46"/>
 
-            <Button
-                Text="Guardar"/>
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                            
+                            <!-- Precio Compra -->
+                            <VerticalStackLayout Spacing="6">
+                                <Label 
+                                    Text="Precio Compra" 
+                                    FontSize="12"
+                                    FontAttributes="Bold"
+                                    TextColor="#1F2937"/>
+                                <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                                    <Entry
+                                        Placeholder="0.00"
+                                        Keyboard="Numeric"
+                                        FontSize="14"
+                                        PlaceholderColor="#9CA3AF"
+                                        />
+                                </Frame>
+                            </VerticalStackLayout>
 
-        </VerticalStackLayout>
+                            <!-- Precio Venta -->
+                            <VerticalStackLayout Spacing="6">
+                                <Label 
+                                    Text="Precio Venta" 
+                                    FontSize="12"
+                                    FontAttributes="Bold"
+                                    TextColor="#1F2937"/>
+                                <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                                    <Entry
+                                        Placeholder="0.00"
+                                        Keyboard="Numeric"
+                                        FontSize="14"
+                                        PlaceholderColor="#9CA3AF"
+                                        />
+                                </Frame>
+                            </VerticalStackLayout>
 
-    </ScrollView>
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Inventario -->
+                <Frame BorderColor="#F59E0B" CornerRadius="12" Padding="16" HasShadow="True" BackgroundColor="White">
+                    <VerticalStackLayout Spacing="12">
+                        <Label 
+                            Text="Información de Inventario" 
+                            FontSize="16"
+                            FontAttributes="Bold"
+                            TextColor="#92400E"/>
+
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                            
+                            <!-- Stock Inicial -->
+                            <VerticalStackLayout Spacing="6">
+                                <Label 
+                                    Text="Stock Inicial" 
+                                    FontSize="12"
+                                    FontAttributes="Bold"
+                                    TextColor="#1F2937"/>
+                                <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                                    <Entry
+                                        Placeholder="0"
+                                        Keyboard="Numeric"
+                                        FontSize="14"
+                                        PlaceholderColor="#9CA3AF"
+                                        />
+                                </Frame>
+                            </VerticalStackLayout>
+
+                            <!-- Stock Mínimo -->
+                            <VerticalStackLayout Spacing="6">
+                                <Label 
+                                    Text="Stock Mínimo" 
+                                    FontSize="12"
+                                    FontAttributes="Bold"
+                                    TextColor="#1F2937"/>
+                                <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                                    <Entry
+                                        Placeholder="0"
+                                        Keyboard="Numeric"
+                                        FontSize="14"
+                                        PlaceholderColor="#9CA3AF"
+                                        />
+                                </Frame>
+                            </VerticalStackLayout>
+
+                        </Grid>
+
+                        <!-- Categoría -->
+                        <VerticalStackLayout Spacing="6">
+                            <Label 
+                                Text="Categoría" 
+                                FontSize="12"
+                                FontAttributes="Bold"
+                                TextColor="#1F2937"/>
+                            <Frame BorderColor="#E5E7EB" CornerRadius="8" Padding="0" BackgroundColor="#F9FAFB" HasShadow="False">
+                                <Picker
+                                    Title="Selecciona una categoría"
+                                    FontSize="14"
+                                    >
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Electrónica</x:String>
+                                            <x:String>Ferretería</x:String>
+                                            <x:String>Textil</x:String>
+                                            <x:String>Otros</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
+                            </Frame>
+                        </VerticalStackLayout>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Acciones -->
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,8,0,0">
+                    
+                    <Button
+                        Text="Cancelar"
+                        BackgroundColor="#F3F4F6"
+                        TextColor="#6B7280"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        Padding="0,14"
+                        FontSize="16"
+                        Clicked="OnCancelClicked"
+                        BorderColor="#E5E7EB"
+                        BorderWidth="1"/>
+
+                    <Button
+                        Text="Guardar Producto"
+                        BackgroundColor="#10B981"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="10"
+                        Padding="0,14"
+                        FontSize="16"
+                        Clicked="OnSaveClicked"
+                        Grid.Column="1"/>
+
+                </Grid>
+
+                <!-- Espacio -->
+                <BoxView HeightRequest="20"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+    </Grid>
 
 </ContentPage>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
+<ContentPage 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodels="clr-namespace:AppInventario.ViewsModels"
@@ -11,9 +11,47 @@
     BackgroundColor="#1E3A8A">
 
     <VerticalStackLayout
-        Padding="30"
-        Spacing="20"
-        VerticalOptions="Center">
+        Spacing="0"
+        VerticalOptions="Fill">
+
+        <!-- Header -->
+        <VerticalStackLayout 
+            Padding="30,50,30,30"
+            Spacing="10"
+            VerticalOptions="Start">
+            <Label
+                Text="📦"
+                FontSize="64"
+                HorizontalOptions="Center"/>
+            <Label
+                Text="AppInventario"
+                FontSize="32"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                TextColor="White"/>
+            <Label
+                Text="Sistema de Gestión de Inventario"
+                FontSize="16"
+                HorizontalOptions="Center"
+                TextColor="#E0E7FF"
+                Opacity="0.9"/>
+        </VerticalStackLayout>
+
+        <!-- Formulario -->
+        <VerticalStackLayout
+            Padding="30"
+            Spacing="16"
+            VerticalOptions="End">
+
+            <!-- Card de Login -->
+            <Frame 
+                BorderColor="#3B82F6" 
+                CornerRadius="15" 
+                Padding="20" 
+                HasShadow="True" 
+                BackgroundColor="White">
+
+                <VerticalStackLayout Spacing="16">
 
         <Label
             Text="Sistema de Inventario"

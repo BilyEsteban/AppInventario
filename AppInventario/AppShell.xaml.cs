@@ -1,4 +1,5 @@
-﻿using AppInventario.ViewsModels;
+﻿using AppInventario.Views;
+using AppInventario.ViewsModels;
 using AppInventario.Models;
 using AppInventario.Views;
 using Microsoft.Extensions.DependencyInjection;
@@ -77,6 +78,5 @@ namespace AppInventario
                 }
             }
         }
-
     }
 }

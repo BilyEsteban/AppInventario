@@ -8,10 +8,10 @@ public partial class MainPage : ContentPage
     private readonly IAuthService _authService;
 
     public MainPage(IAuthService authService)
-    {
-        InitializeComponent();
+	{
+		InitializeComponent();
         _authService = authService;
-    }
+	}
 
     protected override async void OnAppearing()
     {
@@ -56,10 +56,10 @@ public partial class MainPage : ContentPage
         await Shell.Current.GoToAsync("products");
     }
 
-    private async void OnAddProductClicked(object sender, EventArgs e)
-    {
-        await Shell.Current.GoToAsync("productform");
-    }
+	private async void OnAddProductClicked(object sender, EventArgs e)
+	{
+		await Shell.Current.GoToAsync("productform");
+	}
 
     private async void OnLogoutClicked(object sender, EventArgs e)
     {
