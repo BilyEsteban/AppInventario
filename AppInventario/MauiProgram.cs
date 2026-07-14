@@ -1,8 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
-using System.IO;
-using AppInventario.Views;
 using AppInventario.ViewsModels;
 using AppInventario.Models;
+using CommunityToolkit.Maui;
 
 namespace AppInventario
 {
@@ -12,7 +11,9 @@ namespace AppInventario
         {
             var builder = MauiApp.CreateBuilder();
             builder
+
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -23,28 +24,31 @@ namespace AppInventario
                 {
                     
                 });
-
-            // Registrar servicios y vistas
-            builder.Services.AddSingleton<MainPage>();
-            builder.Services.AddSingleton<ProductPage>();
-            builder.Services.AddSingleton<ProductFormPage>();
-            builder.Services.AddSingleton<LoginPage>();
-            builder.Services.AddSingleton<RegisterPage>();
-            builder.Services.AddSingleton<UsersPage>();
-            builder.Services.AddSingleton<AppShell>();
-
-            // Registrar ViewModels
-            builder.Services.AddSingleton<MainPageViewModel>();
-            builder.Services.AddSingleton<ProductPageViewModel>();
-            builder.Services.AddSingleton<ProductFormPageViewModel>();
-            builder.Services.AddSingleton<LoginPageViewModel>();
-            builder.Services.AddSingleton<RegisterPageViewModel>();
-            builder.Services.AddSingleton<UsersPageViewModel>();
-
+            
             // Registrar servicios de datos y autenticación
             var dbPath = Path.Combine(FileSystem.AppDataDirectory, "inventario.db3");
             builder.Services.AddSingleton<IDatabaseService>(new DatabaseService(dbPath));
             builder.Services.AddSingleton<IAuthService>(new AuthService(dbPath));
+
+            // Registrar ViewModels
+            builder.Services.AddTransient<LoginPageViewModel>();
+            builder.Services.AddTransient<RegisterPageViewModel>();
+            builder.Services.AddTransient<MainPageViewModel>();
+            builder.Services.AddTransient<ProductPageViewModel>();
+            builder.Services.AddTransient<ProductFormPageViewModel>();
+            builder.Services.AddTransient<UsersPageViewModel>();
+
+            // Registrar servicios y vistas
+            builder.Services.AddTransient<Views.LoginPage>();
+            builder.Services.AddTransient<Views.RegisterPage>();
+            builder.Services.AddTransient<Views.MainPage>();
+            builder.Services.AddTransient<Views.ProductPage>();
+            builder.Services.AddTransient<Views.ProductFormPage>();
+            builder.Services.AddTransient<Views.UsersPage>();
+
+            builder.Services.AddSingleton<AppShell>();
+
+
 
 #if DEBUG
     		builder.Logging.AddDebug();

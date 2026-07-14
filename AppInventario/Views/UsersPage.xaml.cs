@@ -20,6 +20,11 @@ public partial class UsersPage : ContentPage
 
     private async void OnAddUserClicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("//register");
+        await Shell.Current.GoToAsync("users");
+    }
+
+    private async void OnUsersClicked(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("users");
     }
 }
