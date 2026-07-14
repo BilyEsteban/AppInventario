@@ -157,7 +157,32 @@
                         </Grid>
                     </Frame>
 
-                </VerticalStackLayout>
+                    <!-- Movimiento 2 -->
+                    <Frame BorderColor="#E5E7EB" CornerRadius="10" Padding="14" HasShadow="False" BackgroundColor="White">
+                        <Grid ColumnDefinitions="50,*,Auto" ColumnSpacing="12" RowSpacing="4">
+                            <Label 
+                                Text="" 
+                                FontSize="28"
+                                VerticalOptions="Center"/>
+                            <VerticalStackLayout Grid.Column="1" Spacing="2" VerticalOptions="Center">
+                                <Label 
+                                    Text="Salida de Stock" 
+                                    FontSize="14"
+                                    FontAttributes="Bold"
+                                    TextColor="#1F2937"/>
+                                <Label 
+                                    Text="Producto: Arandelas - 200 unidades" 
+                                    FontSize="12"
+                                    TextColor="#6B7280"/>
+                            </VerticalStackLayout>
+                            <Label 
+                                Text="Hace 5h" 
+                                FontSize="12"
+                                TextColor="#9CA3AF"
+                                Grid.Column="2"
+                                VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
 
             </VerticalStackLayout>
 

@@ -32,6 +32,25 @@ public partial class MainPage : ContentPage
         // Aquí puedes actualizar la UI con la información del usuario
     }
 
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+        
+        // Verificar que el usuario esté autenticado
+        var token = Preferences.Get("auth_token", string.Empty);
+        var isValid = await _authService.ValidateTokenAsync(token);
+        
+        if (!isValid)
+        {
+            await Shell.Current.GoToAsync("//login");
+            return;
+        }
+
+        // Cargar datos del usuario actual
+        var currentUser = await _authService.GetCurrentUserAsync();
+        // Aquí puedes actualizar la UI con la información del usuario
+    }
+
     private async void OnProductsClicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync("products");

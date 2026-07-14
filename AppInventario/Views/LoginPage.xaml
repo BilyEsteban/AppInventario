@@ -22,6 +22,29 @@
             HorizontalOptions="Center"
             TextColor="White"/>
 
+        <!-- Formulario -->
+        <VerticalStackLayout
+            Padding="30"
+            Spacing="16"
+            VerticalOptions="End">
+
+            <!-- Card de Login -->
+            <Frame 
+                BorderColor="#3B82F6" 
+                CornerRadius="15" 
+                Padding="20" 
+                HasShadow="True" 
+                BackgroundColor="White">
+
+                <VerticalStackLayout Spacing="16">
+
+        <Label
+            Text="Sistema de Inventario"
+            FontSize="28"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            TextColor="White"/>
+
         <VerticalStackLayout Spacing="6">
             <Label 
                 Text="Usuario o Email" 
