@@ -36,6 +36,12 @@
             Route="products" />
 
         <ShellContent
+            Title="Nuevo Producto"
+            Icon="add.png"
+            ContentTemplate="{DataTemplate views:ProductFormPage}"
+            Route="productform" />
+
+        <ShellContent
             Title="Login"
             Icon="user.png"
             ContentTemplate="{DataTemplate views:UsersPage}"
